@@ -12,8 +12,10 @@ public class CameraManager : MonoBehaviour
         cameraPos = transform.position - searchPlayer.transform.position;
     }
 
-    void LateUpdate()
+    void Update()
     {
+        // if(transform.position != searchPlayer.transform.position + cameraPos)
+        //transform.position = Vector3.Lerp(transform.position, searchPlayer.transform.position + cameraPos, 500f * Time.deltaTime);
         transform.position = searchPlayer.transform.position + cameraPos;
     }
 }

@@ -21,6 +21,14 @@ public class ObjectMove : MonoBehaviour
         objectManager = FindObjectOfType<ObjectManager>();
         ranRotateSpeed = Random.Range(1,5);
         ranRotateWay = new Vector3(Random.Range(0,2), Random.Range(0, 2), Random.Range(0, 2));
+        //Debug.Log("start 오프젝트 풀링 시 어떻게 실행될까?");
+        //오브젝트 풀링 시 start는 처음 생성되었을 때만 실행되는 것이 확인된다.
+    }
+
+    private void OnEnable()
+    {
+        //Debug.Log("onEnable 오프젝트 풀링 시 어떻게 실행될까?");
+        //오브젝트 풀링 시 enable 될 때 마다 실행되는 것이 확인된다.
     }
 
     void FixedUpdate()

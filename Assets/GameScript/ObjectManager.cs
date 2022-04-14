@@ -16,17 +16,23 @@ public class ObjectManager : MonoBehaviour
     List<float> objPosData;
     public int objDensity;
     int objNum;
+    float starTime;
 
     private void Start()
     {
         objPosData = new List<float>();
         SetObjectsPos();
         objNum = 0;
+        starTime = 2f;
     }
 
     void FixedUpdate()
     {
-        Invoke("CreateStars",2f);
+        if(starTime > Time.time)
+        {
+            CreateStars();
+            starTime = Time.time + 2f; //Invoke 대신 실행
+        }
 
         if(player.transform.position.z > objPosData[objNum] && objPosData.Count-1 > objNum)
         {

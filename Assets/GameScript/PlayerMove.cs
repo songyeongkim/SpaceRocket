@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     public UIManager uiManager;
     public Transform goalPos;
     public ParticleSystem boosterEffect;
+    public ParticleSystem boosterFire;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerMove : MonoBehaviour
         nowGame = true;
         rocketScale = 1;
         boosterEffect.Stop();
+        boosterFire.Stop();
     }
 
     void Update()
@@ -65,9 +67,9 @@ public class PlayerMove : MonoBehaviour
                 rocketScale = 0.7f;
             transform.localScale = new Vector3(1,rocketScale,1);
 
-            float posZ = transform.position.z;
-            posZ -= 0.2f;
-            transform.position = new Vector3(transform.position.x, transform.position.y, posZ);
+            //float posZ = transform.position.z;
+            //posZ -= 0.2f;
+            //transform.position = new Vector3(transform.position.x, transform.position.y, posZ);
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -99,6 +101,7 @@ public class PlayerMove : MonoBehaviour
     IEnumerator GageInit()
     {
         boosterEffect.Play();
+        boosterFire.Play();
         while (gageScale > 0)
         {
             yield return new WaitForSeconds(0.01f);
@@ -110,6 +113,7 @@ public class PlayerMove : MonoBehaviour
         {
             canLaunch = true;
             boosterEffect.Stop();
+            boosterFire.Stop();
         }
     }
 

@@ -22,16 +22,16 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         startTime = 0;
+        distance = "0Km";
     }
 
     private void Update()
     {
-        ShowDisTance();
-
         startTime += Time.deltaTime; //재시작 시 다시 0초로 돌아가야 하므로
 
-        distance = player.transform.position.z + "km";
+        distance = Mathf.Round(player.transform.position.z) + "km";
         time = "시간 : " + Mathf.Round(startTime) + "초";
+        ShowDisTance();
     }
 
     public void GameOver()
